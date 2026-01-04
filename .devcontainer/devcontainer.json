@@ -1,0 +1,39 @@
+{
+  "name": "Spring RAG Demo Dev Container",
+  "dockerComposeFile": "docker-compose.yml",
+  "service": "devcontainer",
+  "workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
+  "shutdownAction": "stopCompose",
+  // Configure tool-specific properties
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "redhat.java",
+        "vmware.vscode-spring-boot",
+        "openai.chatgpt",
+        "vscjava.vscode-lombok",
+        "ckolkman.vscode-postgres"
+      ],
+      "containerEnv": {
+        "JAVA_HOME": "/usr/lib/jvm/msopenjdk-current",
+        "PATH": "/usr/lib/jvm/msopenjdk-current/bin:${containerEnv:PATH}",
+        "DB_HOST": "pgvector"
+      },
+      "settings": {
+        "java.import.gradle.java.home": "/usr/lib/jvm/msopenjdk-current", 
+        "java.import.gradle.downloadSources": true
+      }
+    }
+  },
+  // Use 'forwardPorts' to make a list of ports inside the container available locally
+  "forwardPorts": [
+    8080,
+    5432
+  ],
+  "portsAttributes": {
+    "8080": {
+      "label": "Spring Boot Application",
+      "onAutoForward": "openBrowser"
+    }
+  }
+}

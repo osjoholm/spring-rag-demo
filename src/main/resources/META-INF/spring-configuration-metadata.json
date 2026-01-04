@@ -1,0 +1,49 @@
+{
+  "groups": [
+    {
+      "name": "rag",
+      "type": "ax.sjoholm.srd.configuration.RagProperties",
+      "sourceType": "ax.sjoholm.srd.configuration.RagProperties",
+      "description": "Configuration properties for Retrieval Augmented Generation (RAG)."
+    }
+  ],
+  "properties": [
+    {
+      "name": "rag.top-k",
+      "type": "java.lang.Integer",
+      "description": "Number of most similar document chunks to retrieve for context. Higher values provide more context but may include less relevant information.",
+      "sourceType": "ax.sjoholm.srd.configuration.RagProperties",
+      "defaultValue": 5
+    },
+    {
+      "name": "rag.similarity-threshold",
+      "type": "java.lang.Double",
+      "description": "Minimum similarity score (0.0-1.0) for retrieved documents. Documents below this threshold are filtered out. Higher values ensure more relevant results but may exclude useful context.",
+      "sourceType": "ax.sjoholm.srd.configuration.RagProperties",
+      "defaultValue": 0.3
+    },
+    {
+      "name": "rag.classpath-file",
+      "type": "java.lang.String",
+      "description": "Classpath resource file containing documents to ingest (e.g., '1998-1999.txt')."
+    }
+  ],
+  "hints": [
+    {
+      "name": "rag.top-k",
+      "values": [
+        { "value": 3, "description": "Conservative - fewer but more relevant results" },
+        { "value": 5, "description": "Balanced - default setting" },
+        { "value": 10, "description": "Comprehensive - more context, may include less relevant results" }
+      ]
+    },
+    {
+      "name": "rag.similarity-threshold",
+      "values": [
+        { "value": 0.2, "description": "Lenient - includes more results" },
+        { "value": 0.3, "description": "Balanced - default setting" },
+        { "value": 0.5, "description": "Strict - only highly relevant results" }
+      ]
+    }
+  ]
+}

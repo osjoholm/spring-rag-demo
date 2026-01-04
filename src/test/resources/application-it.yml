@@ -1,0 +1,15 @@
+spring:
+  datasource:
+    url: ${IT_DB_URL:jdbc:postgresql://localhost:5432/postgres}
+    username: ${IT_DB_USER:postgres}
+    password: ${IT_DB_PASS:devcontainer}
+
+  ai:
+    vectorstore:
+      pgvector:
+        initialize-schema: true
+        remove-existing-vector-store-table: true
+        table-name: vector_store_test
+        dimensions: 256
+        distance-type: COSINE_DISTANCE
+        index-type: NONE
